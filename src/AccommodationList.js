@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Accommodation from './Accommodation';
+import ReservationConfirmation from './ReservationConfirmation';
 
 const AccommodationList = () => {
   const [accommodations, setAccommodations] = useState([]);
@@ -77,15 +78,13 @@ const AccommodationList = () => {
     <div>
       <h1>Accommodation List</h1>
       {reservationSuccess && reservedAccommodation && (
-        <div>
-          <p>Uspješno ste rezervirali smještaj {reservedAccommodation.title}</p>
-          <p>Termin boravka: {startDate} - {endDate}</p>
-          <p>Broj osoba: {capacity}</p>
-          {reservedAccommodation.totalPrice && (
-            <p>Ukupna cijena: {reservedAccommodation.totalPrice} €</p>
-          )}
-          <button onClick={handleReturnToList}>Back to List</button>
-        </div>
+        <ReservationConfirmation
+        reservedAccommodation={reservedAccommodation}
+        startDate={startDate}
+        endDate={endDate}
+        capacity={capacity}
+        handleReturnToList={handleReturnToList}
+      />
       )}
       {!reservationSuccess && (
         <div>
@@ -123,6 +122,7 @@ const AccommodationList = () => {
           ))}
         </div>
       )}
+      <br />
     </div>
   );
 };

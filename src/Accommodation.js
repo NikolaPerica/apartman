@@ -32,7 +32,8 @@ const Accommodation = ({ data, startDate, endDate, capacity, onReservation }) =>
 
   return (
     <div>
-      <img src={data.image} alt={data.title} />
+      <br />
+      <img src={data.image} alt={data.title} max-width={"85%"}/>
       <h2>{data.title}</h2>
       <p>Capacity: {data.capacity}</p>
       {data.beachDistanceInMeters && <p>Beach Distance: {data.beachDistanceInMeters} meters</p>}
@@ -59,7 +60,8 @@ const Accommodation = ({ data, startDate, endDate, capacity, onReservation }) =>
         </div>
       )}
       <button onClick={handleToggleDetails}>{showDetails ? 'Hide Details' : 'Show Details'}</button>
-    </div>
+      <br />
+    </div> 
   );
 };
 
